@@ -10,15 +10,6 @@ class ShellActivity : AppCompatActivity() {
     private lateinit var nfc: Nfc
     private lateinit var execution: Execution
 
-    /* Upload contents to HTML view */
-    private fun handleNfcScan(intent: Intent) {
-        /* Get tag contents */
-        val bytes = nfc.readBytes(intent)
-
-        /* Execute */
-        executeScriptFromBytes(bytes)
-    }
-
     /* Choose the best accessible working directory for the script */
     private fun getBestWorkingDir(): File {
         val externalFilesDir = getExternalFilesDir(null)
@@ -79,28 +70,10 @@ class ShellActivity : AppCompatActivity() {
         /* Create our execution environment */
         execution = Execution(getSystemService(POWER_SERVICE) as PowerManager)
 
-        /* If we opened the app by scanning a tag, process it */
-        handleNfcScan(intent)
-    }
+        /* Get tag contents */
+        val bytes = nfc.readBytes(intent)
 
-    /* Catch Nfc tag scan in our foreground intent filter */
-    override fun onNewIntent(thisIntent: Intent?) {
-        super.onNewIntent(thisIntent)
-
-        /* Call Nfc tag handler if we are sure this is an Nfc scan */
-        if (thisIntent != null)
-            handleNfcScan(thisIntent)
-    }
-
-    /* Enable foreground scanning */
-    override fun onResume() {
-        super.onResume()
-        nfc.enableForegroundIntent(this)
-    }
-
-    /* Disable foreground scanning */
-    override fun onPause() {
-        super.onPause()
-        nfc.disableForegroundIntent(this)
+        /* Execute */
+        executeScriptFromBytes(bytes)
     }
 }
