@@ -1,4 +1,4 @@
-package com.draco.nfcshell.utils
+package com.draco.nfcshell
 
 import java.io.ByteArrayOutputStream
 import java.lang.Exception

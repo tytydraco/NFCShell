@@ -1,4 +1,4 @@
-package com.draco.nfcshell.utils
+package com.draco.nfcshell
 
 import android.app.Activity
 import android.app.PendingIntent
@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Intent
 import android.nfc.*
 import android.nfc.tech.Ndef
-import com.draco.nfcshell.R
 import java.io.IOException
 
 class Nfc(context: Context) {
