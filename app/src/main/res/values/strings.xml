@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">NFCShell</string>
+    <string name="nfc_mime">text/sh</string>
+</resources>
