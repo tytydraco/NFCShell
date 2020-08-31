@@ -29,7 +29,7 @@ class ExecParams {
 
 /* Class for clean script execution */
 class Execution(private val powerManager: PowerManager) {
-    private val wakelockTag = "TagSH::Executing"
+    private val wakelockTag = "NFCShell::Executing"
     var executing = AtomicBoolean(false)
     var outputBuffer: MutableList<String> = Collections.synchronizedList(arrayListOf<String>())
 
