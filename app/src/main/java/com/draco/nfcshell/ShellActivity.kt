@@ -1,11 +1,11 @@
 package com.draco.nfcshell
 
+import android.app.Activity
 import android.os.Bundle
 import android.os.PowerManager
-import androidx.appcompat.app.AppCompatActivity
 import java.io.File
 
-class ShellActivity : AppCompatActivity() {
+class ShellActivity : Activity() {
     private lateinit var nfc: Nfc
     private lateinit var execution: Execution
 
