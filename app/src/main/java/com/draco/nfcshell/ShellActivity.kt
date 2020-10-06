@@ -2,7 +2,7 @@ package com.draco.nfcshell
 
 import android.app.Activity
 import android.os.Bundle
-import java.io.FileOutputStream
+import java.io.File
 
 class ShellActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,10 +16,8 @@ class ShellActivity : Activity() {
         val bytes = nfc.readBytes(intent)
 
         /* Write our script */
-        val fileOutput = createTempDir("script", "sh")
-        val fileOutputStream = FileOutputStream(fileOutput)
-        fileOutputStream.write(bytes)
-        fileOutputStream.close()
+        val fileOutput = File.createTempFile("script", "sh")
+        fileOutput.writeBytes(bytes)
 
         /* Begin execution */
         ProcessBuilder("sh", fileOutput.absolutePath).start()

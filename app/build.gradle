@@ -7,10 +7,10 @@ android {
 
     defaultConfig {
         applicationId "com.draco.nfcshell"
-        minSdkVersion 24
+        minSdkVersion 23
         targetSdkVersion 30
-        versionCode 4
-        versionName "1.2"
+        versionCode 5
+        versionName "1.2.1"
     }
 
     buildTypes {
