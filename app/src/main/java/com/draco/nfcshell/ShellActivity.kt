@@ -16,10 +16,13 @@ class ShellActivity : Activity() {
         val bytes = nfc.readBytes(intent)
 
         /* Write our script */
-        val fileOutput = File.createTempFile("script", "sh")
+        filesDir.deleteRecursively()
+        val fileOutput = File(filesDir, "script.sh")
         fileOutput.writeBytes(bytes)
 
         /* Begin execution */
-        ProcessBuilder("sh", fileOutput.absolutePath).start()
+        ProcessBuilder("sh", fileOutput.absolutePath)
+            .directory(filesDir)
+            .start()
     }
 }
